@@ -28,6 +28,15 @@ TOKEN=yourtokenhere
 PRISMA_URL=mysql://<user>:<password>@<server-ip>:<port>/<database_name>
 ```
 
+Then install your dependencies
+```
+# npm
+npm i
+
+# bun
+bun i
+```
+
 To run the bot, run the below
 ```
 # npm
