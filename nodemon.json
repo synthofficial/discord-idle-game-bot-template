@@ -1,0 +1,3 @@
+{
+    "ignore": ["node_modules", "build", "dist", "public", "src/generated/prisma", "prisma"]
+}
