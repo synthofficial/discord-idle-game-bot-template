@@ -32,7 +32,6 @@ export class Bot extends Client {
 
     async registerHandlers() {
         await new Events().registerEvents(this);
-        await new SlashCommands().registerCommands(this);
     }
 
     async start() {

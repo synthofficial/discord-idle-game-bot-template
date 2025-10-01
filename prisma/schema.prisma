@@ -13,12 +13,26 @@ datasource db {
   url      = env("PRISMA_URL")
 }
 
-model User2 {
+model Player {
   userId String @id @unique
-  money Int @default(1000)
+  money Decimal @default(1000) @db.Decimal(18, 2)
   experience Int @default(0)
   level Int @default(1)
   lastSale DateTime @default(now()) // !! THIS IS USED TO CALCULATE HOW MUCH MONEY THE USER WILL MAKE ON THE NEXT SALE, EXPLANATION IN README.md !!
 
-  @@map("users_2")
+  backpack   Backpack?
+
+  @@map("players")
+  @@index([lastSale])
+}
+
+model Backpack {
+  id Int @id @default(autoincrement())
+  maxItems Int @default(100)
+  level Int @default(1)
+
+  playerId String @unique
+  player   Player @relation(fields: [playerId], references: [userId], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("backpacks")
 }

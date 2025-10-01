@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, Events, SlashCommandBuilder, SlashCommandOption } from "discord.js";
+import { ChatInputCommandInteraction, Events, SlashCommandBuilder, SlashCommandOption, User } from "discord.js";
 import { PrismaClient } from "./Client/database";
 
 export interface SlashCommand {
@@ -12,6 +12,18 @@ export interface Event {
     once?: boolean;
     execute: (...args: any[]) => Promise<void>;
 }
+
+/**
+ * Game Interfaces
+ */
+
+export interface Player {
+    user : User;
+    money : number;
+    experience : number;
+    level : number;
+}
+
 
 declare global {
     namespace NodeJS {
